@@ -1,0 +1,5 @@
+#+STARTUP: showall hidestars
+
+* My emacs-configuration.
+** Added try package, which helps try packages.
+** Added which-key package, which completes command.
