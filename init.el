@@ -10,12 +10,11 @@
 	     '("melpa3" . "http://www.mirrorservice.org/sites/stable.melpa.org/packages/"))
 (package-initialize)
 
+
+;; Bootstrap `use-package'
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)
   (package-install 'use-package))
-
-
-; use usepackage to install package ??
 
 (use-package try
   :ensure t)
