@@ -29,6 +29,12 @@
   :ensure t
   :config
   (add-hook 'org-mode-hook (lambda() (org-bullets-mode 1))))
+
+;;  ido(interactively do things) mode
+;;(setq ido-enable-flex-matching t)
+;;(setq ido-everywhere t)
+;;(ido-mode 1)
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
