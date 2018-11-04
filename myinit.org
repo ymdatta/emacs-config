@@ -1,4 +1,6 @@
 #+STARTIP: overview
+#+TITLE: My Emacs configuration.
+#+Author: ymdatta
 * Interface tweaks
 #+BEGIN_SRC emacs-lisp
 (setq inhibit-startup-message t)
@@ -7,7 +9,7 @@
 ;;Everytime yes or no option is changed to y or n.
 (fset 'yes-or-no-p 'y-or-n-p)
 #+END_SRC
-
+  
 * try
 #+BEGIN_SRC emacs-lisp
 (use-package try
@@ -40,8 +42,9 @@
 Swiper gives us a really efficient incremental search with regular 
 expressions and Ivy/Counsel replace a lot of ido or helms completion
 functionality.
-#+BEGIN_SRC emacs_lisp
-;; looks like counsel is requirement for swiper!
+
+(Looks like counsel is requiremnt for swiper!)
+#+BEGIN_SRC emacs-lisp
 (use-package counsel
   :ensure t
   )
@@ -72,7 +75,7 @@ functionality.
 #+END_SRC
 
 * Autocomplete
-#+BEGIN_SRC emacs_lisp
+#+BEGIN_SRC emacs-lisp
 (use-package auto-complete
   :ensure t
   :init
