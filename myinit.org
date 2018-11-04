@@ -74,13 +74,10 @@ functionality.
   ))
 #+END_SRC
 
-* Autocomplete
+* Flycheck
 #+BEGIN_SRC emacs-lisp
-(use-package auto-complete
-  :ensure t
-  :init
-  (progn
-  (ac-config-default)
-   (global-auto-complete-mode t)
-  ))
+ (use-package flycheck
+ :ensure t
+ :init
+ (global-flycheck-mode t))
 #+END_SRC
