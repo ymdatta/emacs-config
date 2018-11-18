@@ -1,0 +1,1053 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Prediction of NBA MVP's using Statistical Analysis.</title>
+<!-- 2018-11-18 Sun 19:53 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<meta  name="author" content="Yelugoti Mohana Datta (IMT2016012)\\ Sri Ram Marisetty (IMT2016120)\\ Sri Sumanth Yenikapati (IMT2016081)" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  pre.src-sh:before    { content: 'sh'; }
+  pre.src-bash:before  { content: 'sh'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-R:before     { content: 'R'; }
+  pre.src-perl:before  { content: 'Perl'; }
+  pre.src-java:before  { content: 'Java'; }
+  pre.src-sql:before   { content: 'SQL'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.right  { text-align: center;  }
+  th.left   { text-align: center;   }
+  th.center { text-align: center; }
+  td.right  { text-align: right;  }
+  td.left   { text-align: left;   }
+  td.center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara:nth-child(2) { display: inline; }
+  .footpara { display: block; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  /*]]>*/-->
+</style>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+<script type="text/javascript" src="http://orgmode.org/mathjax/MathJax.js"></script>
+<script type="text/javascript">
+<!--/*--><![CDATA[/*><!--*/
+    MathJax.Hub.Config({
+        // Only one of the two following lines, depending on user settings
+        // First allows browser-native MathML display, second forces HTML/CSS
+        //  config: ["MMLorHTML.js"], jax: ["input/TeX"],
+            jax: ["input/TeX", "output/HTML-CSS"],
+        extensions: ["tex2jax.js","TeX/AMSmath.js","TeX/AMSsymbols.js",
+                     "TeX/noUndefined.js"],
+        tex2jax: {
+            inlineMath: [ ["\\(","\\)"] ],
+            displayMath: [ ['$$','$$'], ["\\[","\\]"], ["\\begin{displaymath}","\\end{displaymath}"] ],
+            skipTags: ["script","noscript","style","textarea","pre","code"],
+            ignoreClass: "tex2jax_ignore",
+            processEscapes: false,
+            processEnvironments: true,
+            preview: "TeX"
+        },
+        showProcessingMessages: true,
+        displayAlign: "center",
+        displayIndent: "2em",
+
+        "HTML-CSS": {
+             scale: 100,
+             availableFonts: ["STIX","TeX"],
+             preferredFont: "TeX",
+             webFont: "TeX",
+             imageFont: "TeX",
+             showMathMenu: true,
+        },
+        MMLorHTML: {
+             prefer: {
+                 MSIE:    "MML",
+                 Firefox: "MML",
+                 Opera:   "HTML",
+                 other:   "HTML"
+             }
+        }
+    });
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Prediction of NBA MVP's using Statistical Analysis.</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">1. Problem Statement:</a>
+<ul>
+<li><a href="#sec-1-1">1.1. Introduction:</a></li>
+<li><a href="#sec-1-2">1.2. Problem:</a></li>
+</ul>
+</li>
+<li><a href="#sec-2">2. Motivation:</a></li>
+<li><a href="#sec-3">3. Data collection:</a>
+<ul>
+<li><a href="#sec-3-1">3.1. Resources:</a></li>
+<li><a href="#sec-3-2">3.2. Processing:</a></li>
+</ul>
+</li>
+<li><a href="#sec-4">4. Approach:</a>
+<ul>
+<li>
+<ul>
+<li><a href="#sec-4-0-1">4.0.1. How MVP is calculated in general?</a></li>
+<li><a href="#sec-4-0-2">4.0.2. How we calculated who's the MVP?</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#sec-5">5. Analysis of Dataset:</a></li>
+<li><a href="#sec-6">6. Visualization</a>
+<ul>
+<li><a href="#sec-6-1">6.1. Correlation</a></li>
+</ul>
+</li>
+<li><a href="#sec-7">7. Feature Engineering</a></li>
+<li><a href="#sec-8">8. Model Building</a>
+<ul>
+<li><a href="#sec-8-1">8.1. AdaBoost Regressor:</a>
+<ul>
+<li><a href="#sec-8-1-1">8.1.1. Parameters:</a></li>
+</ul>
+</li>
+<li><a href="#sec-8-2">8.2. DecisionTree Regressor:</a>
+<ul>
+<li><a href="#sec-8-2-1">8.2.1. Parameters:</a></li>
+</ul>
+</li>
+<li><a href="#sec-8-3">8.3. Linear Regression:</a></li>
+</ul>
+</li>
+<li><a href="#sec-9">9. Training, Validation and Test Metrics.</a></li>
+<li><a href="#sec-10">10. Sources And References.</a></li>
+<li><a href="#sec-11">11. Conclusion</a>
+<ul>
+<li><a href="#sec-11-1">11.1. Where our model have fallen short?</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1"><span class="section-number-2">1</span> Problem Statement:</h2>
+<div class="outline-text-2" id="text-1">
+</div><div id="outline-container-sec-1-1" class="outline-3">
+<h3 id="sec-1-1"><span class="section-number-3">1.1</span> Introduction:</h3>
+<div class="outline-text-3" id="text-1-1">
+<p>
+The National Basketball Association Most Valuable Player Award 
+is an annual National Basketball Association award given since 
+the 1955-56 season to the best performing player of the regular season.
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-1-2" class="outline-3">
+<h3 id="sec-1-2"><span class="section-number-3">1.2</span> Problem:</h3>
+<div class="outline-text-3" id="text-1-2">
+<p>
+From the data of 32 years, we are trying to predict the MVP 
+for the last 5 years.
+</p>
+
+<p>
+Every year, there is always huge debate about who is gonna win
+the MVP award for that particular season. It is fairly easy to
+determine the short-list of candiates; however, we wanted to 
+investigate, via various ML models, how well can we model MVP
+voting.
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2"><span class="section-number-2">2</span> Motivation:</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+The hypothesis that motivated the problem statement was the following:
+Though the performance statistics of players have some influence on
+the selection of MVP, but the winner of NBA's MVP actually boils 
+down to "narrative". Narrative is naturally hard to define concept,
+but by that we mean the kinds of qualitative, hard to model factors
+that often influence voters. For ex: Clutchness: To be clutch is to
+play great when it matters most, to take big shots that mean the
+most.
+</p>
+
+<p>
+So, the worse our model is, the stronger this hypothesis appears
+because we are only using quantitative measures.
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3"><span class="section-number-2">3</span> Data collection:</h2>
+<div class="outline-text-2" id="text-3">
+</div><div id="outline-container-sec-3-1" class="outline-3">
+<h3 id="sec-3-1"><span class="section-number-3">3.1</span> Resources:</h3>
+<div class="outline-text-3" id="text-3-1">
+<p>
+Mostly, we found the related data from <a href="https://www.basketball-reference.com/awards/mvp.html">Basketball-reference</a>. It had 
+the data regarding MVP winners and the top players in the race of 
+MVP award for a season. This had the data from 1956-2017. We also
+found <a href="https://www.kaggle.com/drgilermo/nba-players-stats">kaggle Dataset</a>, <span class="underline"><b>but</b></span> it didn't have a crucial label parameter,
+so we were unable to use that dataset.
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-3-2" class="outline-3">
+<h3 id="sec-3-2"><span class="section-number-3">3.2</span> Processing:</h3>
+<div class="outline-text-3" id="text-3-2">
+<p>
+We did scraping on this website, we basically collected data from
+each season, converted it into csv format and then merged data of
+all seasons. Data from the website was in the text format. The 
+data from the website didn't have information regarding the voting
+year. So, we manually entered the details of the year in the data.
+</p>
+
+<p>
+At the end, our data had these columns.
+</p>
+
+<table id="columns-table" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<caption class="t-above"><span class="table-number">Table 1:</span> Columns in our Final Data Frame.</caption>
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="left">Description</th>
+<th scope="col" class="left">Column Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="left">Year</td>
+<td class="left">Year</td>
+</tr>
+
+<tr>
+<td class="left">Player</td>
+<td class="left">Player</td>
+</tr>
+
+<tr>
+<td class="left">Age</td>
+<td class="left">Age</td>
+</tr>
+
+<tr>
+<td class="left">Team</td>
+<td class="left">Tm</td>
+</tr>
+
+<tr>
+<td class="left">MVP vote Share</td>
+<td class="left">Share</td>
+</tr>
+
+<tr>
+<td class="left">Games</td>
+<td class="left">G</td>
+</tr>
+
+<tr>
+<td class="left">Minutes per game</td>
+<td class="left">MP</td>
+</tr>
+
+<tr>
+<td class="left">Points</td>
+<td class="left">PTS</td>
+</tr>
+
+<tr>
+<td class="left">Total Rebounds</td>
+<td class="left">TRB</td>
+</tr>
+
+<tr>
+<td class="left">Assists per game</td>
+<td class="left">AST</td>
+</tr>
+
+<tr>
+<td class="left">Steals per game</td>
+<td class="left">STL</td>
+</tr>
+
+<tr>
+<td class="left">Blocks per game</td>
+<td class="left">BLK</td>
+</tr>
+
+<tr>
+<td class="left">Field Goal Percentage</td>
+<td class="left">FG%</td>
+</tr>
+
+<tr>
+<td class="left">3-pointer Perncentage</td>
+<td class="left">3P%</td>
+</tr>
+
+<tr>
+<td class="left">Free throw Percentage</td>
+<td class="left">FT%</td>
+</tr>
+
+<tr>
+<td class="left">Win shares</td>
+<td class="left">WS</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-4" class="outline-2">
+<h2 id="sec-4"><span class="section-number-2">4</span> Approach:</h2>
+<div class="outline-text-2" id="text-4">
+</div><div id="outline-container-sec-4-0-1" class="outline-4">
+<h4 id="sec-4-0-1"><span class="section-number-4">4.0.1</span> How MVP is calculated in general?</h4>
+<div class="outline-text-4" id="text-4-0-1">
+<p>
+Until the 1979-80 season, the MVP was selected by a vote of NBA players.
+Since, the 1980-81 season, the award is decided by a panel of 
+sportswriters and broadcasters throughout the United States and Canada.
+</p>
+
+<p>
+<span class="underline"><b>Note</b></span>: A panel member can vote to more than one player.
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-4-0-2" class="outline-4">
+<h4 id="sec-4-0-2"><span class="section-number-4">4.0.2</span> How we calculated who's the MVP?</h4>
+<div class="outline-text-4" id="text-4-0-2">
+</div><ol class="org-ol"><li><a id="sec-4-0-2-1" name="sec-4-0-2-1"></a>Problem: The number of people who are in the panel<br  /><div class="outline-text-5" id="text-4-0-2-1">
+<p>
+voting have been increased through
+years. So, this resulted in rise in the number of votes per player
+through the years. So, we can't directly take the number
+of votes per player as parameter that the  model needs to learn, as the 
+number of votes per player throughout the years is biased.
+</p>
+</div>
+</li>
+
+<li><a id="sec-4-0-2-2" name="sec-4-0-2-2"></a>Solution:<br  /><div class="outline-text-5" id="text-4-0-2-2">
+ \begin{equation}
+  Voteshare = \frac{Number \\ of \\votes\\ for\\ a \\player}{Total\\ number\space of\\ votes\\ that\\ year}
+\end{equation}
+
+<p>
+We used above formula to get vote share column, which normalizes the
+number of votes per season. 
+</p>
+
+<p>
+The person with <span class="underline">highest vote share</span> in a season wins the MVP of the season.
+</p>
+
+<p>
+With these inputs and output parameter, we created four models:
+</p>
+
+<ul class="org-ul">
+<li>Support Vector Regressor (SVR)
+</li>
+<li>Ada Boost Regressor
+</li>
+<li>Decision Tree Regressor
+</li>
+<li>Linear Regression
+</li>
+</ul>
+
+<p>
+We train the models to predict the voteshare of a player given his statistics.
+</p>
+</div>
+</li></ol>
+</div>
+</div>
+
+<div id="outline-container-sec-5" class="outline-2">
+<h2 id="sec-5"><span class="section-number-2">5</span> Analysis of Dataset:</h2>
+<div class="outline-text-2" id="text-5">
+<ul class="org-ul">
+<li>The Dataset we collected including test and train had 750 rows.
+</li>
+
+<li>We only collected data from 1975-2017, we didn't include data from
+1950-1974 because STL, BLK data has been included from 1975 and it proved
+to be an important factor in deciding the outcome of the games and
+also the voteshare when we calculated correlation graph.
+</li>
+
+<li>We excluded a column called WS/48 because it can be linearly predicted
+by MPG, G, and WS.
+</li>
+
+<li>There were some players with null values for some columns. We decided
+on replacing those null values with zero. Because, if we had taken 
+average for filling the null values, column would loose its
+significance.
+</li>
+
+<li>We also calculated <b>Minutes</b> column from the MP and G columns, with 
+the intuition that a MVP player would have played more minutes, as 
+the award generally goes to the player who had been in playoffs, which
+automatically increases the minutes he played over other players (i.e,
+those players who didn't play in playoffs).
+</li>
+
+<li>We are also taking the Assists(AST), Steals(STL), Blocks(BLK) per game,
+because it normalizes the corresponding columns.
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-6" class="outline-2">
+<h2 id="sec-6"><span class="section-number-2">6</span> Visualization</h2>
+<div class="outline-text-2" id="text-6">
+</div><div id="outline-container-sec-6-1" class="outline-3">
+<h3 id="sec-6-1"><span class="section-number-3">6.1</span> Correlation</h3>
+<div class="outline-text-3" id="text-6-1">
+
+<div id="corr-graph" class="figure">
+<p><img src="images/correlation.jpeg" alt="correlation.jpeg" />
+</p>
+<p><span class="figure-number">Figure 1:</span> Correlation between columns in train data.</p>
+</div>
+
+<p>
+In the Figure 1, we can see that Voteshare(share) isn't highly 
+correlated to a particular column, but depends well on
+multiple columns.
+</p>
+
+
+<div id="violin-plot" class="figure">
+<p><img src="images/seaborn.png" alt="seaborn.png" />
+</p>
+<p><span class="figure-number">Figure 2:</span> Violin Plot of data.</p>
+</div>
+
+<p>
+Figure 2 gives the violin plot of data excluding the
+Year column.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-7" class="outline-2">
+<h2 id="sec-7"><span class="section-number-2">7</span> Feature Engineering</h2>
+<div class="outline-text-2" id="text-7">
+<ul class="org-ul">
+<li>In the data, the columns we decided/generated to keep, were explained in Data Analysis
+section.
+</li>
+
+<li>From correlation matrix [<a href="#corr-graph">1</a>], we observe that Voteshare doesn't depend
+on single column but on multiple columns. We also observe that Voteshare
+majorly depends on PTS, WS columns. We also did normalization on every feature
+seperately according to the season itself (like normalizing STL in 2010 season), but it didn't give any significant results.
+</li>
+
+<li>After taking correlation values into account and after doing a lot of 
+experiments, we decided to take the following columns in feature vector.
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<caption class="t-above"><span class="table-number">Table 2:</span> Final columns for feature vector.</caption>
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+
+<col  class="left" />
+
+<col  class="left" />
+
+<col  class="left" />
+
+<col  class="left" />
+
+<col  class="left" />
+
+<col  class="left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="left">MP</td>
+<td class="left">PTS</td>
+<td class="left">STL</td>
+<td class="left">FG%</td>
+<td class="left">FT%</td>
+<td class="left">WS</td>
+<td class="left">G</td>
+<td class="left">TRB</td>
+</tr>
+</tbody>
+</table>
+
+
+<div id="feature-corr" class="figure">
+<p><img src="images/correlation-2.png" alt="correlation-2.png" />
+</p>
+<p><span class="figure-number">Figure 3:</span> Correlation Matrix of Final Features taken.</p>
+</div>
+
+<p>
+Refer to Figure3 [<a href="#feature-corr">3</a>] for correlation between final features and share.
+</p>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-8" class="outline-2">
+<h2 id="sec-8"><span class="section-number-2">8</span> Model Building</h2>
+<div class="outline-text-2" id="text-8">
+<p>
+We used the following regression models.
+</p>
+</div>
+
+<div id="outline-container-sec-8-1" class="outline-3">
+<h3 id="sec-8-1"><span class="section-number-3">8.1</span> AdaBoost Regressor:</h3>
+<div class="outline-text-3" id="text-8-1">
+</div><div id="outline-container-sec-8-1-1" class="outline-4">
+<h4 id="sec-8-1-1"><span class="section-number-4">8.1.1</span> Parameters:</h4>
+<div class="outline-text-4" id="text-8-1-1">
+<p>
+max_depth = 4 <br  />
+                number_of_estimators=500 <br  />
+                random_state = np.random.RandomState(1)
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-8-2" class="outline-3">
+<h3 id="sec-8-2"><span class="section-number-3">8.2</span> DecisionTree Regressor:</h3>
+<div class="outline-text-3" id="text-8-2">
+</div><div id="outline-container-sec-8-2-1" class="outline-4">
+<h4 id="sec-8-2-1"><span class="section-number-4">8.2.1</span> Parameters:</h4>
+<div class="outline-text-4" id="text-8-2-1">
+<p>
+max_depth = 10 <br  />
+               random_state = np.random.RandomState(1) <br  />
+               splitter = random
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-8-3" class="outline-3">
+<h3 id="sec-8-3"><span class="section-number-3">8.3</span> Linear Regression:</h3>
+<div class="outline-text-3" id="text-8-3">
+<p>
+We used standard parmeters to build our model.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-9" class="outline-2">
+<h2 id="sec-9"><span class="section-number-2">9</span> Training, Validation and Test Metrics.</h2>
+<div class="outline-text-2" id="text-9">
+<p>
+We used Root Mean Squared Error(RMSE) for calculating error.
+</p>
+<ul class="org-ul">
+<li><span class="underline"><b>Metrics for 2012-2013 Season</b></span>:
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="right" />
+
+<col  class="right" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="left">&#xa0;</th>
+<th scope="col" class="right">Validation error</th>
+<th scope="col" class="right">Test error</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="left">AdaBoost Regressor</td>
+<td class="right">0.2246</td>
+<td class="right">0.2166</td>
+</tr>
+
+<tr>
+<td class="left">Decision Tree Regressor</td>
+<td class="right">0.1950</td>
+<td class="right">0.1300</td>
+</tr>
+
+<tr>
+<td class="left">Linear Regression</td>
+<td class="right">0.1880</td>
+<td class="right">0.1600</td>
+</tr>
+</tbody>
+</table>
+
+
+<div class="figure">
+<p><img src="images/2013/l.jpeg" alt="l.jpeg" />
+</p>
+</div>
+
+
+<div class="figure">
+<p><img src="images/2013/a.png" alt="a.png" />
+</p>
+</div>
+
+
+<div class="figure">
+<p><img src="images/2013/d.png" alt="d.png" />
+</p>
+</div>
+</li>
+</ul>
+
+
+<ul class="org-ul">
+<li><span class="underline"><b>Metrics for 2013-2014 Season</b></span>:
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="right" />
+
+<col  class="right" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="left">&#xa0;</th>
+<th scope="col" class="right">Validation error</th>
+<th scope="col" class="right">Test error</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="left">AdaBoost Regressor</td>
+<td class="right">0.2246</td>
+<td class="right">0.2558</td>
+</tr>
+
+<tr>
+<td class="left">Decision Tree Regressor</td>
+<td class="right">0.1950</td>
+<td class="right">0.2700</td>
+</tr>
+
+<tr>
+<td class="left">Linear Regression</td>
+<td class="right">0.1880</td>
+<td class="right">0.2028</td>
+</tr>
+</tbody>
+</table>
+
+
+<div class="figure">
+<p><img src="images/2014/l.png" alt="l.png" />
+</p>
+</div>
+
+
+<div class="figure">
+<p><img src="images/2014/a.png" alt="a.png" />
+</p>
+</div>
+
+
+<div class="figure">
+<p><img src="images/2014/d.png" alt="d.png" />
+</p>
+</div>
+</li>
+
+<li><span class="underline"><b>Metrics for 2014-2015 Season</b></span>:
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="right" />
+
+<col  class="right" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="left">&#xa0;</th>
+<th scope="col" class="right">Validation error</th>
+<th scope="col" class="right">Test error</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="left">AdaBoost Regressor</td>
+<td class="right">0.2246</td>
+<td class="right">0.2060</td>
+</tr>
+
+<tr>
+<td class="left">Decision Tree Regressor</td>
+<td class="right">0.1950</td>
+<td class="right">0.2140</td>
+</tr>
+
+<tr>
+<td class="left">Linear Regression</td>
+<td class="right">0.1880</td>
+<td class="right">0.2270</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ul>
+
+
+
+<div class="figure">
+<p><img src="images/2015/l.png" alt="l.png" />
+</p>
+</div>
+
+
+<div class="figure">
+<p><img src="images/2015/a.png" alt="a.png" />
+</p>
+</div>
+
+
+<div class="figure">
+<p><img src="images/2015/d.png" alt="d.png" />
+</p>
+</div>
+
+<ul class="org-ul">
+<li><span class="underline"><b>Metrics for 2015-2016 Season</b></span>:
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="right" />
+
+<col  class="right" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="left">&#xa0;</th>
+<th scope="col" class="right">Validation error</th>
+<th scope="col" class="right">Test error</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="left">AdaBoost Regressor</td>
+<td class="right">0.2246</td>
+<td class="right">0.247</td>
+</tr>
+
+<tr>
+<td class="left">Decision Tree Regressor</td>
+<td class="right">0.1950</td>
+<td class="right">0.237</td>
+</tr>
+
+<tr>
+<td class="left">Linear Regression</td>
+<td class="right">0.188</td>
+<td class="right">0.233</td>
+</tr>
+</tbody>
+</table>
+
+
+<div class="figure">
+<p><img src="images/2016/l.png" alt="l.png" />
+</p>
+</div>
+
+
+<div class="figure">
+<p><img src="images/2016/a.png" alt="a.png" />
+</p>
+</div>
+
+
+<div class="figure">
+<p><img src="images/2016/d.png" alt="d.png" />
+</p>
+</div>
+</li>
+
+<li><span class="underline"><b>Metrics for 2016-2017 Season</b></span>:
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="right" />
+
+<col  class="right" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="left">&#xa0;</th>
+<th scope="col" class="right">Validation error</th>
+<th scope="col" class="right">Test error</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="left">AdaBoost Regressor</td>
+<td class="right">0.2246</td>
+<td class="right">0.2426</td>
+</tr>
+
+<tr>
+<td class="left">Decision Tree Regressor</td>
+<td class="right">0.1950</td>
+<td class="right">0.3320</td>
+</tr>
+
+<tr>
+<td class="left">Linear Regression</td>
+<td class="right">0.188</td>
+<td class="right">0.2613</td>
+</tr>
+</tbody>
+</table>
+
+
+<div class="figure">
+<p><img src="images/2017/l.png" alt="l.png" />
+</p>
+</div>
+
+
+<div class="figure">
+<p><img src="images/2017/a.png" alt="a.png" />
+</p>
+</div>
+
+
+<div class="figure">
+<p><img src="images/2017/d.png" alt="d.png" />
+</p>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-10" class="outline-2">
+<h2 id="sec-10"><span class="section-number-2">10</span> Sources And References.</h2>
+<div class="outline-text-2" id="text-10">
+<ul class="org-ul">
+<li><a href="http://www.harvardsportsanalysis.org/2018/06/nba-mvp-predictions/">Harvard</a>
+</li>
+<li><a href="https://www.basketball-reference.com/">BasketBall Reference</a>
+</li>
+<li><a href="https://www.reddit.com/r/nba/comments/93z1au/oc_finding_the_least_and_most_deserving_mvps_of/">Reddit</a>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-11" class="outline-2">
+<h2 id="sec-11"><span class="section-number-2">11</span> Conclusion</h2>
+<div class="outline-text-2" id="text-11">
+<ul class="org-ul">
+<li>After doing experiments with different models, these 3 models results
+described above were better.
+</li>
+
+<li>Among those AdaBoost Regressor seemed to work better, followed by Linear
+Regression, followed by DecisionTree Regressor.
+</li>
+
+<li>We can also see validation error for AdaBoost is quite nearer to the
+error from test data.
+</li>
+
+<li>AdaBoost was able to predict MVP 4 times correctly in the past 5 seasons.
+</li>
+</ul>
+</div>
+
+<div id="outline-container-sec-11-1" class="outline-3">
+<h3 id="sec-11-1"><span class="section-number-3">11.1</span> Where our model have fallen short?</h3>
+<div class="outline-text-3" id="text-11-1">
+<ul class="org-ul">
+<li>There is a considerable difference between today's stats and 80's stats.
+</li>
+<li>Voters can see past beyond stats.
+</li>
+<li>Voters take things into consideration that are not easily quantifiable
+like cluctchness etc.
+</li>
+<li>Since MVP votes are given only for 10-15 people for each season,
+
+<p>
+<span class="underline"><b>the dataset is considerably small.</b></span>
+</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Yelugoti Mohana Datta (IMT2016012)\\ Sri Ram Marisetty (IMT2016120)\\ Sri Sumanth Yenikapati (IMT2016081)</p>
+<p class="date">Created: 2018-11-18 Sun 19:53</p>
+<p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 25.2.2 (<a href="http://orgmode.org">Org</a> mode 8.2.10)</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>
