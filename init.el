@@ -15,11 +15,15 @@
   (package-install 'use-package))
 
 (org-babel-load-file (expand-file-name "~/.emacs.d/myinit.org"))
+(org-babel-do-load-languages
+   'org-babel-load-languages
+      '((python . t)))
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(org-agenda-files nil)
  '(package-selected-packages
    (quote
     (auto-complete markdown-mode which-key use-package try org-bullets counsel auto-org-md))))
