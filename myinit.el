@@ -1,4 +1,3 @@
-
 (setq inhibit-startup-message t)
 (tool-bar-mode -1)
 
@@ -39,10 +38,10 @@
 (use-package swiper
   :ensure try
   :bind (("C-s" . swiper)
-         ("C-r" . swiper)
-         ("C-c C-r" . ivy-resume)
-         ("M-x" . counsel-M-x)
-         ("C-x C-f" . counsel-find-file))
+	 ("C-r" . swiper)
+	 ("C-c C-r" . ivy-resume)
+	 ("M-x" . counsel-M-x)
+	 ("C-x C-f" . counsel-find-file))
   :config
   (progn
     (ivy-mode 1)
@@ -55,3 +54,14 @@
 :ensure t
 :init
 (global-flycheck-mode t))
+
+(require 'ox-beamer)
+
+(use-package ox-reveal
+:ensure ox-reveal)
+
+(setq org-reveal-root "http://cdn.jsdelivr.net/reveal.js/3.0.0/")
+(setq org-reveal-mathjax t)
+
+(use-package htmlize
+:ensure t)
