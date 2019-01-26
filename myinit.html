@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-01-11 Fri 21:41 -->
+<!-- 2019-01-26 Sat 15:57 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>My Emacs configuration.</title>
@@ -247,79 +247,91 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org9ad15d0">1. Interface tweaks</a></li>
-<li><a href="#org57f991a">2. try</a></li>
-<li><a href="#org2c97a56">3. which-key</a></li>
-<li><a href="#org15fb6a8">4. Org mode</a></li>
-<li><a href="#org670d307">5. Swiper/Ivy/Counsel</a></li>
-<li><a href="#org7ed29da">6. Flycheck</a></li>
-<li><a href="#orge9e6df8">7. beamer</a></li>
-<li><a href="#orgcd4849d">8. reveal.js</a></li>
+<li><a href="#org8aadf37">1. Customizations</a></li>
+<li><a href="#orgcb906c5">2. Interface tweaks</a></li>
+<li><a href="#org19a0eb7">3. try</a></li>
+<li><a href="#org8353fd6">4. which-key</a></li>
+<li><a href="#org00d1edb">5. Org mode</a></li>
+<li><a href="#orgb47c726">6. Swiper/Ivy/Counsel</a></li>
+<li><a href="#org4e7713c">7. Flycheck</a></li>
+<li><a href="#org4abe96b">8. beamer</a></li>
+<li><a href="#org0440647">9. reveal.js</a></li>
+<li><a href="#org2bfed1a">10. spaceline</a></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org9ad15d0" class="outline-2">
-<h2 id="org9ad15d0"><span class="section-number-2">1</span> Interface tweaks</h2>
+<div id="outline-container-org8aadf37" class="outline-2">
+<h2 id="org8aadf37"><span class="section-number-2">1</span> Customizations</h2>
 <div class="outline-text-2" id="text-1">
 <div class="org-src-container">
-<pre class="src src-emacs-lisp">(<span style="color: #a020f0;">setq</span> inhibit-startup-message t)
+<pre class="src src-emacs-lisp"><span style="color: #2aa1ae; background-color: #ecf3ec;">;;</span><span style="color: #2aa1ae; background-color: #ecf3ec;">Toggle frame fullscreen.</span>
+<span style="color: #2aa1ae; background-color: #ecf3ec;">;;</span><span style="color: #2aa1ae; background-color: #ecf3ec;">(toggle-frame-fullscreen)</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgcb906c5" class="outline-2">
+<h2 id="orgcb906c5"><span class="section-number-2">2</span> Interface tweaks</h2>
+<div class="outline-text-2" id="text-2">
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(<span style="color: #3a81c3; font-weight: bold;">setq</span> inhibit-startup-message t)
 (tool-bar-mode -1)
 
-<span style="color: #b22222;">;;</span><span style="color: #b22222;">Everytime yes or no option is changed to y or n.</span>
+<span style="color: #2aa1ae; background-color: #ecf3ec;">;;</span><span style="color: #2aa1ae; background-color: #ecf3ec;">Everytime yes or no option is changed to y or n.</span>
 (fset 'yes-or-no-p 'y-or-n-p)
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org57f991a" class="outline-2">
-<h2 id="org57f991a"><span class="section-number-2">2</span> try</h2>
-<div class="outline-text-2" id="text-2">
+<div id="outline-container-org19a0eb7" class="outline-2">
+<h2 id="org19a0eb7"><span class="section-number-2">3</span> try</h2>
+<div class="outline-text-2" id="text-3">
 <div class="org-src-container">
-<pre class="src src-emacs-lisp">(<span style="color: #a020f0;">use-package</span> <span style="color: #008b8b;">try</span>
-  <span style="color: #483d8b;">:ensure</span> t)
+<pre class="src src-emacs-lisp">(<span style="color: #3a81c3; font-weight: bold;">use-package</span> <span style="color: #4e3163;">try</span>
+  <span style="color: #3a81c3;">:ensure</span> t)
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org2c97a56" class="outline-2">
-<h2 id="org2c97a56"><span class="section-number-2">3</span> which-key</h2>
-<div class="outline-text-2" id="text-3">
+<div id="outline-container-org8353fd6" class="outline-2">
+<h2 id="org8353fd6"><span class="section-number-2">4</span> which-key</h2>
+<div class="outline-text-2" id="text-4">
 <p>
 Brings up some help
 </p>
 <div class="org-src-container">
-<pre class="src src-emacs-lisp">(<span style="color: #a020f0;">use-package</span> <span style="color: #008b8b;">which-key</span>
-  <span style="color: #483d8b;">:ensure</span> t
-  <span style="color: #483d8b;">:config</span> (which-key-mode))
+<pre class="src src-emacs-lisp">(<span style="color: #3a81c3; font-weight: bold;">use-package</span> <span style="color: #4e3163;">which-key</span>
+  <span style="color: #3a81c3;">:ensure</span> t
+  <span style="color: #3a81c3;">:config</span> (which-key-mode))
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org15fb6a8" class="outline-2">
-<h2 id="org15fb6a8"><span class="section-number-2">4</span> Org mode</h2>
-<div class="outline-text-2" id="text-4">
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><span style="color: #b22222;">;; </span><span style="color: #b22222;">Org-mode stuff</span>
-(<span style="color: #a020f0;">use-package</span> <span style="color: #008b8b;">org-bullets</span>
-  <span style="color: #483d8b;">:ensure</span> t
-  <span style="color: #483d8b;">:config</span>
-  (add-hook 'org-mode-hook (<span style="color: #a020f0;">lambda</span>() (org-bullets-mode 1))))
-
-<span style="color: #b22222;">;;  </span><span style="color: #b22222;">ido(interactively do things) mode</span>
-<span style="color: #b22222;">;;</span><span style="color: #b22222;">(setq ido-enable-flex-matching t)</span>
-<span style="color: #b22222;">;;</span><span style="color: #b22222;">(setq ido-everywhere t)</span>
-<span style="color: #b22222;">;;</span><span style="color: #b22222;">(ido-mode 1)</span>
-</pre>
-</div>
-</div>
-</div>
-
-<div id="outline-container-org670d307" class="outline-2">
-<h2 id="org670d307"><span class="section-number-2">5</span> Swiper/Ivy/Counsel</h2>
+<div id="outline-container-org00d1edb" class="outline-2">
+<h2 id="org00d1edb"><span class="section-number-2">5</span> Org mode</h2>
 <div class="outline-text-2" id="text-5">
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span style="color: #2aa1ae; background-color: #ecf3ec;">;; </span><span style="color: #2aa1ae; background-color: #ecf3ec;">Org-mode stuff</span>
+(<span style="color: #3a81c3; font-weight: bold;">use-package</span> <span style="color: #4e3163;">org-bullets</span>
+  <span style="color: #3a81c3;">:ensure</span> t
+  <span style="color: #3a81c3;">:config</span>
+  (add-hook 'org-mode-hook (<span style="color: #3a81c3; font-weight: bold;">lambda</span>() (org-bullets-mode 1))))
+
+<span style="color: #2aa1ae; background-color: #ecf3ec;">;;  </span><span style="color: #2aa1ae; background-color: #ecf3ec;">ido(interactively do things) mode</span>
+<span style="color: #2aa1ae; background-color: #ecf3ec;">;;</span><span style="color: #2aa1ae; background-color: #ecf3ec;">(setq ido-enable-flex-matching t)</span>
+<span style="color: #2aa1ae; background-color: #ecf3ec;">;;</span><span style="color: #2aa1ae; background-color: #ecf3ec;">(setq ido-everywhere t)</span>
+<span style="color: #2aa1ae; background-color: #ecf3ec;">;;</span><span style="color: #2aa1ae; background-color: #ecf3ec;">(ido-mode 1)</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgb47c726" class="outline-2">
+<h2 id="orgb47c726"><span class="section-number-2">6</span> Swiper/Ivy/Counsel</h2>
+<div class="outline-text-2" id="text-6">
 <p>
 Swiper gives us a really efficient incremental search with regular 
 expressions and Ivy/Counsel replace a lot of ido or helms completion
@@ -330,72 +342,87 @@ functionality.
 (Looks like counsel is requiremnt for swiper!)
 </p>
 <div class="org-src-container">
-<pre class="src src-emacs-lisp">(<span style="color: #a020f0;">use-package</span> <span style="color: #008b8b;">counsel</span>
-  <span style="color: #483d8b;">:ensure</span> t
+<pre class="src src-emacs-lisp">(<span style="color: #3a81c3; font-weight: bold;">use-package</span> <span style="color: #4e3163;">counsel</span>
+  <span style="color: #3a81c3;">:ensure</span> t
   )
 
-(<span style="color: #a020f0;">use-package</span> <span style="color: #008b8b;">ivy</span>
-  <span style="color: #483d8b;">:ensure</span> t
-  <span style="color: #483d8b;">:diminish</span> (ivy-mode)
-  <span style="color: #483d8b;">:bind</span> ((<span style="color: #8b2252;">"C-x b"</span> . ivy-switch-buffer))
-  <span style="color: #483d8b;">:config</span>
+(<span style="color: #3a81c3; font-weight: bold;">use-package</span> <span style="color: #4e3163;">ivy</span>
+  <span style="color: #3a81c3;">:ensure</span> t
+  <span style="color: #3a81c3;">:diminish</span> (ivy-mode)
+  <span style="color: #3a81c3;">:bind</span> ((<span style="color: #2d9574;">"C-x b"</span> . ivy-switch-buffer))
+  <span style="color: #3a81c3;">:config</span>
   (ivy-mode 1)
-  (<span style="color: #a020f0;">setq</span> ivy-use-virtual-buffers t)
-  (<span style="color: #a020f0;">setq</span> ivy-display-style 'fancy))
+  (<span style="color: #3a81c3; font-weight: bold;">setq</span> ivy-use-virtual-buffers t)
+  (<span style="color: #3a81c3; font-weight: bold;">setq</span> ivy-display-style 'fancy))
 
-(<span style="color: #a020f0;">use-package</span> <span style="color: #008b8b;">swiper</span>
-  <span style="color: #483d8b;">:ensure</span> try
-  <span style="color: #483d8b;">:bind</span> ((<span style="color: #8b2252;">"C-s"</span> . swiper)
-         (<span style="color: #8b2252;">"C-r"</span> . swiper)
-         (<span style="color: #8b2252;">"C-c C-r"</span> . ivy-resume)
-         (<span style="color: #8b2252;">"M-x"</span> . counsel-M-x)
-         (<span style="color: #8b2252;">"C-x C-f"</span> . counsel-find-file))
-  <span style="color: #483d8b;">:config</span>
-  (<span style="color: #a020f0;">progn</span>
+(<span style="color: #3a81c3; font-weight: bold;">use-package</span> <span style="color: #4e3163;">swiper</span>
+  <span style="color: #3a81c3;">:ensure</span> try
+  <span style="color: #3a81c3;">:bind</span> ((<span style="color: #2d9574;">"C-s"</span> . swiper)
+         (<span style="color: #2d9574;">"C-r"</span> . swiper)
+         (<span style="color: #2d9574;">"C-c C-r"</span> . ivy-resume)
+         (<span style="color: #2d9574;">"M-x"</span> . counsel-M-x)
+         (<span style="color: #2d9574;">"C-x C-f"</span> . counsel-find-file))
+  <span style="color: #3a81c3;">:config</span>
+  (<span style="color: #3a81c3; font-weight: bold;">progn</span>
     (ivy-mode 1)
-    (<span style="color: #a020f0;">setq</span> ivy-use-virtual-buffers t)
-    (<span style="color: #a020f0;">setq</span> ivy-display-style 'fancy)
-    (define-key read-expression-map (kbd <span style="color: #8b2252;">"C-r"</span>) 'counsel-expression-history)
+    (<span style="color: #3a81c3; font-weight: bold;">setq</span> ivy-use-virtual-buffers t)
+    (<span style="color: #3a81c3; font-weight: bold;">setq</span> ivy-display-style 'fancy)
+    (define-key read-expression-map (kbd <span style="color: #2d9574;">"C-r"</span>) 'counsel-expression-history)
   ))
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org7ed29da" class="outline-2">
-<h2 id="org7ed29da"><span class="section-number-2">6</span> Flycheck</h2>
-<div class="outline-text-2" id="text-6">
+<div id="outline-container-org4e7713c" class="outline-2">
+<h2 id="org4e7713c"><span class="section-number-2">7</span> Flycheck</h2>
+<div class="outline-text-2" id="text-7">
 <div class="org-src-container">
-<pre class="src src-emacs-lisp">(<span style="color: #a020f0;">use-package</span> <span style="color: #008b8b;">flycheck</span>
-<span style="color: #483d8b;">:ensure</span> t
-<span style="color: #483d8b;">:init</span>
+<pre class="src src-emacs-lisp">(<span style="color: #3a81c3; font-weight: bold;">use-package</span> <span style="color: #4e3163;">flycheck</span>
+<span style="color: #3a81c3;">:ensure</span> t
+<span style="color: #3a81c3;">:init</span>
 (global-flycheck-mode t))
 </pre>
 </div>
 </div>
 </div>
-<div id="outline-container-orge9e6df8" class="outline-2">
-<h2 id="orge9e6df8"><span class="section-number-2">7</span> beamer</h2>
-<div class="outline-text-2" id="text-7">
+<div id="outline-container-org4abe96b" class="outline-2">
+<h2 id="org4abe96b"><span class="section-number-2">8</span> beamer</h2>
+<div class="outline-text-2" id="text-8">
 <div class="org-src-container">
-<pre class="src src-emacs-lisp">(<span style="color: #a020f0;">require</span> '<span style="color: #008b8b;">ox-beamer</span>)
+<pre class="src src-emacs-lisp">(<span style="color: #3a81c3; font-weight: bold;">require</span> '<span style="color: #4e3163;">ox-beamer</span>)
 </pre>
 </div>
 </div>
 </div>
-<div id="outline-container-orgcd4849d" class="outline-2">
-<h2 id="orgcd4849d"><span class="section-number-2">8</span> reveal.js</h2>
-<div class="outline-text-2" id="text-8">
+<div id="outline-container-org0440647" class="outline-2">
+<h2 id="org0440647"><span class="section-number-2">9</span> reveal.js</h2>
+<div class="outline-text-2" id="text-9">
 <div class="org-src-container">
-<pre class="src src-emacs-lisp">(<span style="color: #a020f0;">use-package</span> <span style="color: #008b8b;">ox-reveal</span>
-<span style="color: #483d8b;">:ensure</span> ox-reveal)
+<pre class="src src-emacs-lisp">(<span style="color: #3a81c3; font-weight: bold;">use-package</span> <span style="color: #4e3163;">ox-reveal</span>
+<span style="color: #3a81c3;">:ensure</span> ox-reveal)
 
-(<span style="color: #a020f0;">setq</span> org-reveal-root <span style="color: #8b2252;">"http://cdn.jsdelivr.net/reveal.js/3.0.0/"</span>)
-(<span style="color: #a020f0;">setq</span> org-reveal-mathjax t)
+(<span style="color: #3a81c3; font-weight: bold;">setq</span> org-reveal-root <span style="color: #2d9574;">"http://cdn.jsdelivr.net/reveal.js/3.0.0/"</span>)
+(<span style="color: #3a81c3; font-weight: bold;">setq</span> org-reveal-mathjax t)
 
-(<span style="color: #a020f0;">use-package</span> <span style="color: #008b8b;">htmlize</span>
-<span style="color: #483d8b;">:ensure</span> t)
+(<span style="color: #3a81c3; font-weight: bold;">use-package</span> <span style="color: #4e3163;">htmlize</span>
+<span style="color: #3a81c3;">:ensure</span> t)
 
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org2bfed1a" class="outline-2">
+<h2 id="org2bfed1a"><span class="section-number-2">10</span> spaceline</h2>
+<div class="outline-text-2" id="text-10">
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(<span style="color: #3a81c3; font-weight: bold;">use-package</span> <span style="color: #4e3163;">spaceline</span> 
+   <span style="color: #3a81c3;">:demand</span> t
+   <span style="color: #3a81c3;">:init</span> 
+   (<span style="color: #3a81c3; font-weight: bold;">setq</span> powerline-default-seperator 'arrow-fade)
+   <span style="color: #3a81c3;">:config</span> 
+   (<span style="color: #3a81c3; font-weight: bold;">require</span> '<span style="color: #4e3163;">spaceline-config</span>)
+   (spaceline-spacemacs-theme))
 </pre>
 </div>
 </div>
@@ -403,7 +430,7 @@ functionality.
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: ymdatta</p>
-<p class="date">Created: 2019-01-11 Fri 21:41</p>
+<p class="date">Created: 2019-01-26 Sat 15:57</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
