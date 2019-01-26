@@ -1,3 +1,6 @@
+;;Toggle frame fullscreen.
+(toggle-frame-fullscreen)
+
 (setq inhibit-startup-message t)
 (tool-bar-mode -1)
 
@@ -65,3 +68,6 @@
 
 (use-package htmlize
 :ensure t)
+
+(require 'spaceline-config)
+(spaceline-spacemacs-theme)

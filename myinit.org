@@ -1,6 +1,11 @@
 #+STARTIP: overview
 #+TITLE: My Emacs configuration.
 #+Author: ymdatta
+* Customizations
+#+BEGIN_SRC emacs-lisp
+;;Toggle frame fullscreen.
+(toggle-frame-fullscreen)
+#+END_SRC
 * Interface tweaks
 #+BEGIN_SRC emacs-lisp
 (setq inhibit-startup-message t)
@@ -97,3 +102,10 @@ functionality.
  :ensure t)
 
 #+END_SRC
+* spacemacs-like
+#+BEGIN_SRC emacs-lisp
+  (require 'spaceline-config)
+  (spaceline-spacemacs-theme)
+#+END_SRC
+
+
