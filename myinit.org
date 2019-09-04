@@ -1,11 +1,14 @@
 #+STARTIP: overview
 #+TITLE: My Emacs configuration.
 #+Author: ymdatta
-* Customizations
+* Initial setup
 #+BEGIN_SRC emacs-lisp
-;;Toggle frame fullscreen.
-(toggle-frame-fullscreen)
+;;  (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
+;;  (load-theme 'midnight t)
 #+END_SRC
+
+#+RESULTS:
+
 * Interface tweaks
 #+BEGIN_SRC emacs-lisp
 (setq inhibit-startup-message t)
@@ -41,7 +44,13 @@
 ;;(setq ido-enable-flex-matching t)
 ;;(setq ido-everywhere t)
 ;;(ido-mode 1)
+
+;;For org-babel
+(org-babel-do-load-languages
+ 'org-babel-load-languages '((C . t)))
 #+END_SRC
+
+#+RESULTS:
 
 * Swiper/Ivy/Counsel
 Swiper gives us a really efficient incremental search with regular 
@@ -90,6 +99,11 @@ functionality.
 #+BEGIN_SRC emacs-lisp
  (require 'ox-beamer)
 #+END_SRC
+* org-ref
+#+BEGIN_SRC emacs-lisp
+(use-package org-ref
+   :ensure t)
+#+END_SRC
 * reveal.js
 #+BEGIN_SRC emacs-lisp
  (use-package ox-reveal
@@ -99,13 +113,65 @@ functionality.
  (setq org-reveal-mathjax t)
 
  (use-package htmlize
- :ensure t)
-
+  :ensure t)
 #+END_SRC
-* spacemacs-like
+
+
+ # (use-package htmlize
+ # :ensure t)
+* spaceline
 #+BEGIN_SRC emacs-lisp
-  (require 'spaceline-config)
-  (spaceline-spacemacs-theme)
+  (use-package spaceline 
+     :demand t
+     :init 
+     (setq powerline-default-seperator 'arrow-fade)
+     :config 
+     (require 'spaceline-config))
 #+END_SRC
 
+* emacs-eclim
+#+BEGIN_SRC emacs-lisp
 
+  (setq eclim-executable "/home/mohanadatta/.p2/pool/plugins/org.eclim_2.8.0/bin/eclim")
+
+  ;; To automatically activate eclim for java source files
+  (require 'eclim)
+  (add-hook 'jave-mode-hook 'eclim-mode)
+
+  (require 'eclimd)
+
+#+END_SRC
+
+* C language related configuration
+#+BEGIN_SRC emacs-lisp
+
+  ;; Setting style to linux - what 
+  ;; the Linux developers use for kernel development
+  (setq c-default-style "linux")
+
+  ;; automatically indent when press RET
+
+  (global-set-key (kbd "RET") 'newline-and-indent)
+
+#+END_SRC
+* yasnippet
+#+BEGIN_SRC emacs-lisp
+
+;; Package yasnippet
+(require 'yasnippet)
+(yas-global-mode 1)
+
+#+END_SRC
+* Magit
+#+BEGIN_SRC emacs-lisp
+
+;; To display information about the Current Git repository,
+;; 'M-x magit-status RET' is used. This is a basic command,
+;; which is used a lot. So, this is given a global key
+;; binding.
+
+;; Taken from magit manual.
+
+ (global-set-key (kbd "C-x g") 'magit-status)
+#+END_SRC
+  

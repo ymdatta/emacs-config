@@ -1,5 +1,5 @@
-;;Toggle frame fullscreen.
-(toggle-frame-fullscreen)
+;;  (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
+;;  (load-theme 'midnight t)
 
 (setq inhibit-startup-message t)
 (tool-bar-mode -1)
@@ -24,6 +24,10 @@
 ;;(setq ido-enable-flex-matching t)
 ;;(setq ido-everywhere t)
 ;;(ido-mode 1)
+
+;;For org-babel
+(org-babel-do-load-languages
+ 'org-babel-load-languages '((C . t)))
 
 (use-package counsel
   :ensure t
@@ -60,6 +64,9 @@
 
 (require 'ox-beamer)
 
+(use-package org-ref
+   :ensure t)
+
 (use-package ox-reveal
 :ensure ox-reveal)
 
@@ -67,7 +74,40 @@
 (setq org-reveal-mathjax t)
 
 (use-package htmlize
-:ensure t)
+ :ensure t)
 
-(require 'spaceline-config)
-(spaceline-spacemacs-theme)
+(use-package spaceline 
+   :demand t
+   :init 
+   (setq powerline-default-seperator 'arrow-fade)
+   :config 
+   (require 'spaceline-config))
+
+(setq eclim-executable "/home/mohanadatta/.p2/pool/plugins/org.eclim_2.8.0/bin/eclim")
+
+;; To automatically activate eclim for java source files
+(require 'eclim)
+(add-hook 'jave-mode-hook 'eclim-mode)
+
+(require 'eclimd)
+
+;; Setting style to linux - what 
+;; the Linux developers use for kernel development
+(setq c-default-style "linux")
+
+;; automatically indent when press RET
+
+(global-set-key (kbd "RET") 'newline-and-indent)
+
+;; Package yasnippet
+(require 'yasnippet)
+(yas-global-mode 1)
+
+;; To display information about the Current Git repository,
+;; 'M-x magit-status RET' is used. This is a basic command,
+;; which is used a lot. So, this is given a global key
+;; binding.
+
+;; Taken from magit manual.
+
+ (global-set-key (kbd "C-x g") 'magit-status)

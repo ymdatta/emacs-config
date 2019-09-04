@@ -3,9 +3,9 @@
 (add-to-list 'package-archives
 	     '("melpa" . "https://melpa.org/packages/"))
 (add-to-list 'package-archives
-	     '("melpa2" . "http://www.mirrorservice.org/sites/melpa.org/packages/"))
+	     '("gnu" . "https://elpa.gnu.org/packages/"))
 (add-to-list 'package-archives
-	     '("melpa3" . "http://www.mirrorservice.org/sites/stable.melpa.org/packages/"))
+	     '("org" . "https://orgmode.org/elpa/"))
 (package-initialize)
 
 
@@ -23,51 +23,47 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(ansi-color-faces-vector
-   [default bold shadow italic underline bold bold-italic bold])
  '(ansi-color-names-vector
-   (vector "#515151" "#f2777a" "#99cc99" "#ffcc66" "#6699cc" "#cc99cc" "#66cccc" "#cccccc"))
- '(beacon-color "#f2777a")
- '(custom-enabled-themes (quote (spacemacs-light)))
+   ["#282c34" "#ff6c6b" "#98be65" "#ECBE7B" "#51afef" "#c678dd" "#46D9FF" "#bbc2cf"])
+ '(custom-enabled-themes nil)
  '(custom-safe-themes
    (quote
-    ("fa2b58bb98b62c3b8cf3b6f02f058ef7827a8e497125de0254f56e373abee088" "bffa9739ce0752a37d9b1eee78fc00ba159748f50dc328af4be661484848e476" "4697a2d4afca3f5ed4fdf5f715e36a6cac5c6154e105f3596b44a4874ae52c45" "6d589ac0e52375d311afaa745205abb6ccb3b21f6ba037104d71111e7e76a3fc" "4aee8551b53a43a883cb0b7f3255d6859d766b6c5e14bcb01bed572fcbef4328" "75d3dde259ce79660bac8e9e237b55674b910b470f313cdf4b019230d01a982a" "ecba61c2239fbef776a72b65295b88e5534e458dfe3e6d7d9f9cb353448a569e" "151bde695af0b0e69c3846500f58d9a0ca8cb2d447da68d7fbf4154dcf818ebc" "d1b4990bd599f5e2186c3f75769a2c5334063e9e541e37514942c27975700370" "100e7c5956d7bb3fd0eebff57fde6de8f3b9fafa056a2519f169f85199cc1c96" "f0dc4ddca147f3c7b1c7397141b888562a48d9888f1595d69572db73be99a024" "d2e9c7e31e574bf38f4b0fb927aaff20c1e5f92f72001102758005e53d77b8c9" "a3fa4abaf08cc169b61dea8f6df1bbe4123ec1d2afeb01c17e11fdc31fc66379" "7e78a1030293619094ea6ae80a7579a562068087080e01c2b8b503b27900165c" "b54826e5d9978d59f9e0a169bbd4739dd927eead3ef65f56786621b53c031a7c" "bb08c73af94ee74453c90422485b29e5643b73b05e8de029a6909af6a3fb3f58" "628278136f88aa1a151bb2d6c8a86bf2b7631fbea5f0f76cba2a0079cd910f7d" "1b8d67b43ff1723960eb5e0cba512a2c7a2ad544ddb2533a90101fd1852b426e" "4cf3221feff536e2b3385209e9b9dc4c2e0818a69a1cdb4b522756bcdf4e00a4" "06f0b439b62164c6f8f84fdda32b62fb50b6d00e8b01c2208e55543a6337433a" "82d2cac368ccdec2fcc7573f24c3f79654b78bf133096f9b40c20d97ec1d8016" "6b2636879127bf6124ce541b1b2824800afc49c6ccd65439d6eb987dbf200c36" "93a0885d5f46d2aeac12bf6be1754faa7d5e28b27926b8aa812840fe7d0b7983" "cd736a63aa586be066d5a1f0e51179239fe70e16a9f18991f6f5d99732cabb32" "fe666e5ac37c2dfcf80074e88b9252c71a22b6f5d2f566df9a7aa4f9bea55ef8" default)))
- '(fci-rule-color "#515151")
- '(flycheck-color-mode-line-face-to-color (quote mode-line-buffer-id))
- '(frame-background-mode (quote dark))
- '(jdee-db-active-breakpoint-face-colors (cons "#FFFBF0" "#268bd2"))
- '(jdee-db-requested-breakpoint-face-colors (cons "#FFFBF0" "#859900"))
- '(jdee-db-spec-breakpoint-face-colors (cons "#FFFBF0" "#E1DBCD"))
- '(org-agenda-files nil)
+    ("a3fa4abaf08cc169b61dea8f6df1bbe4123ec1d2afeb01c17e11fdc31fc66379" "d2e9c7e31e574bf38f4b0fb927aaff20c1e5f92f72001102758005e53d77b8c9" "fe666e5ac37c2dfcf80074e88b9252c71a22b6f5d2f566df9a7aa4f9bea55ef8" "6d589ac0e52375d311afaa745205abb6ccb3b21f6ba037104d71111e7e76a3fc" "4697a2d4afca3f5ed4fdf5f715e36a6cac5c6154e105f3596b44a4874ae52c45" "f0dc4ddca147f3c7b1c7397141b888562a48d9888f1595d69572db73be99a024" "9527feeeec43970b1d725bdc04e97eb2b03b15be982ac50089ad223d3c6f2920" "1436d643b98844555d56c59c74004eb158dc85fc55d2e7205f8d9b8c860e177f" "2b9dc43b786e36f68a9fd4b36dd050509a0e32fe3b0a803310661edb7402b8b6" "8e797edd9fa9afec181efbfeeebf96aeafbd11b69c4c85fa229bb5b9f7f7e66c" "8f97d5ec8a774485296e366fdde6ff5589cf9e319a584b845b6f7fa788c9fa9a" "a22f40b63f9bc0a69ebc8ba4fbc6b452a4e3f84b80590ba0a92b4ff599e53ad0" "b583823b9ee1573074e7cbfd63623fe844030d911e9279a7c8a5d16de7df0ed0" "100e7c5956d7bb3fd0eebff57fde6de8f3b9fafa056a2519f169f85199cc1c96" "cd736a63aa586be066d5a1f0e51179239fe70e16a9f18991f6f5d99732cabb32" "10461a3c8ca61c52dfbbdedd974319b7f7fd720b091996481c8fb1dded6c6116" "93a0885d5f46d2aeac12bf6be1754faa7d5e28b27926b8aa812840fe7d0b7983" "7e78a1030293619094ea6ae80a7579a562068087080e01c2b8b503b27900165c" "0f302165235625ca5a827ac2f963c102a635f27879637d9021c04d845a32c568" "6b289bab28a7e511f9c54496be647dc60f5bd8f9917c9495978762b99d8c96a0" "49ec957b508c7d64708b40b0273697a84d3fee4f15dd9fc4a9588016adee3dad" "6b2636879127bf6124ce541b1b2824800afc49c6ccd65439d6eb987dbf200c36" default)))
+ '(fci-rule-color "#5B6268")
+ '(jdee-db-active-breakpoint-face-colors (cons "#1B2229" "#51afef"))
+ '(jdee-db-requested-breakpoint-face-colors (cons "#1B2229" "#98be65"))
+ '(jdee-db-spec-breakpoint-face-colors (cons "#1B2229" "#3f444a"))
+ '(org-babel-load-languages (quote ((python . t))))
  '(package-selected-packages
    (quote
-    (spaceline spacemacs-theme color-theme-sanityinc-solarized color-theme-sanityinc-tomorrow ox-reveal epresent magit doom-themes auto-complete markdown-mode which-key use-package try org-bullets counsel auto-org-md)))
- '(tool-bar-mode nil)
- '(vc-annotate-background nil)
+    (gruvbox-theme color-theme magit yasnippet-snippets company-emacs-eclim ac-emacs-eclim company-coq doom-themes tuareg utop spaceline ox-reveal org-ref flycheck counsel org-bullets which-key try use-package markdown-mode)))
+ '(pdf-view-midnight-colors (quote ("#fdf4c1" . "#1d2021")))
+ '(send-mail-function (quote mailclient-send-it))
+ '(vc-annotate-background "#282c34")
  '(vc-annotate-color-map
-   (quote
-    ((20 . "#f2777a")
-     (40 . "#f99157")
-     (60 . "#ffcc66")
-     (80 . "#99cc99")
-     (100 . "#66cccc")
-     (120 . "#6699cc")
-     (140 . "#cc99cc")
-     (160 . "#f2777a")
-     (180 . "#f99157")
-     (200 . "#ffcc66")
-     (220 . "#99cc99")
-     (240 . "#66cccc")
-     (260 . "#6699cc")
-     (280 . "#cc99cc")
-     (300 . "#f2777a")
-     (320 . "#f99157")
-     (340 . "#ffcc66")
-     (360 . "#99cc99"))))
+   (list
+    (cons 20 "#98be65")
+    (cons 40 "#b4be6c")
+    (cons 60 "#d0be73")
+    (cons 80 "#ECBE7B")
+    (cons 100 "#e6ab6a")
+    (cons 120 "#e09859")
+    (cons 140 "#da8548")
+    (cons 160 "#d38079")
+    (cons 180 "#cc7cab")
+    (cons 200 "#c678dd")
+    (cons 220 "#d974b7")
+    (cons 240 "#ec7091")
+    (cons 260 "#ff6c6b")
+    (cons 280 "#cf6162")
+    (cons 300 "#9f585a")
+    (cons 320 "#6f4e52")
+    (cons 340 "#5B6268")
+    (cons 360 "#5B6268")))
  '(vc-annotate-very-old-color nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:family "Hack" :foundry "SRC" :slant normal :weight normal :height 98 :width normal)))))
+ )
