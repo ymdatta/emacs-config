@@ -1,4 +1,0 @@
-#+STARTUP: showall hidestars
-
-Emacs-configuration folder. Please check myinit.org for the configuration.
-

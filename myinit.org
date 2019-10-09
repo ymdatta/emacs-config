@@ -5,6 +5,11 @@
 #+BEGIN_SRC emacs-lisp
 ;;  (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
 ;;  (load-theme 'midnight t)
+
+;; Column numbers
+(setq column-number-mode t)
+
+;; whitespace mode
 #+END_SRC
 
 #+RESULTS:
@@ -175,3 +180,10 @@ functionality.
  (global-set-key (kbd "C-x g") 'magit-status)
 #+END_SRC
   
+* Rlang
+
+#+BEGIN_SRC emacs-lisp
+(use-package ess
+  :ensure t
+)
+#+END_SRC

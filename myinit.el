@@ -1,6 +1,12 @@
 ;;  (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
 ;;  (load-theme 'midnight t)
 
+;; Column numbers
+(setq column-number-mode t)
+
+;; whitespace mode
+(require 'whitespace)
+
 (setq inhibit-startup-message t)
 (tool-bar-mode -1)
 
@@ -111,3 +117,7 @@
 ;; Taken from magit manual.
 
  (global-set-key (kbd "C-x g") 'magit-status)
+
+(use-package ess
+  :ensure t
+)

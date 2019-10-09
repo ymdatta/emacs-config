@@ -36,7 +36,7 @@
  '(org-babel-load-languages (quote ((python . t))))
  '(package-selected-packages
    (quote
-    (gruvbox-theme color-theme magit yasnippet-snippets company-emacs-eclim ac-emacs-eclim company-coq doom-themes tuareg utop spaceline ox-reveal org-ref flycheck counsel org-bullets which-key try use-package markdown-mode)))
+    (ess gruvbox-theme color-theme magit yasnippet-snippets company-emacs-eclim ac-emacs-eclim company-coq doom-themes tuareg utop spaceline ox-reveal org-ref flycheck counsel org-bullets which-key try use-package markdown-mode)))
  '(pdf-view-midnight-colors (quote ("#fdf4c1" . "#1d2021")))
  '(send-mail-function (quote mailclient-send-it))
  '(vc-annotate-background "#282c34")
