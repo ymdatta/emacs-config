@@ -2,7 +2,7 @@
 #+TITLE: My Emacs configuration.
 #+Author: ymdatta
 * Initial setup
-#+BEGIN_SRC emacs-lisp
+  #+BEGIN_SRC emacs-lisp
 ;;  (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
 ;;  (load-theme 'midnight t)
 
@@ -19,12 +19,12 @@
 (show-paren-mode t) ;; turn paren-mode on
 
 ;; whitespace mode
-#+END_SRC
+  #+END_SRC
 
-#+RESULTS:
+  #+RESULTS:
 
 * Interface tweaks
-#+BEGIN_SRC emacs-lisp
+  #+BEGIN_SRC emacs-lisp
 (setq inhibit-startup-message t)
 (tool-bar-mode -1)
 
@@ -33,11 +33,11 @@
 
 ;;Everytime yes or no option is changed to y or n.
 (fset 'yes-or-no-p 'y-or-n-p)
-#+END_SRC
-  
+  #+END_SRC
+
 * Terminal configuration
-Taken from [[(prefer-coding-system 'utf-8)%0A(set-default-coding-systems 'utf-8)%0A(set-terminal-coding-system 'utf-8)%0A(set-keyboard-coding-system 'utf-8)%0A;; backwards compatibility as default-buffer-file-coding-system%0A;; is deprecated in 23.2.%0A(if (boundp 'buffer-file-coding-system)%0A    (setq-default buffer-file-coding-system 'utf-8)%0A  (setq default-buffer-file-coding-system 'utf-8))%0A%0A;; Treat clipboard input as UTF-8 string first; compound text next, etc.%0A(setq x-select-request-type '(UTF8_STRING COMPOUND_TEXT TEXT STRING))][Working with coding systems and unicode in Emacs]]
-#+BEGIN_SRC emacs-lisp
+  Taken from [[(prefer-coding-system 'utf-8)%0A(set-default-coding-systems 'utf-8)%0A(set-terminal-coding-system 'utf-8)%0A(set-keyboard-coding-system 'utf-8)%0A;; backwards compatibility as default-buffer-file-coding-system%0A;; is deprecated in 23.2.%0A(if (boundp 'buffer-file-coding-system)%0A    (setq-default buffer-file-coding-system 'utf-8)%0A  (setq default-buffer-file-coding-system 'utf-8))%0A%0A;; Treat clipboard input as UTF-8 string first; compound text next, etc.%0A(setq x-select-request-type '(UTF8_STRING COMPOUND_TEXT TEXT STRING))][Working with coding systems and unicode in Emacs]]
+  #+BEGIN_SRC emacs-lisp
 ;;set the coding systems the terminal uses
 (prefer-coding-system 'utf-8)
 (set-default-coding-systems 'utf-8)
@@ -51,39 +51,38 @@ Taken from [[(prefer-coding-system 'utf-8)%0A(set-default-coding-systems 'utf-8)
 
 ;; Treat clipboard input as UTF-8 string first; compound text next, etc.
 (setq x-select-request-type '(UTF8_STRING COMPOUND_TEXT TEXT STRING))
-#+END_SRC  
+  #+END_SRC
 * try
-#+BEGIN_SRC emacs-lisp
+  #+BEGIN_SRC emacs-lisp
 (use-package try
   :ensure t)
-#+END_SRC
+  #+END_SRC
 * dead xgrip
-  
-** Reason for using this:  
-  Deadgrip is an excellent tool to search for words in files.
-  The reason i am preferring this over rgrep is that sometimes,
-  it doesn't show the matched items in the rgrep buffer.
-  (I may be missing something here, but dead xgrip is so good
-  to ignore what i missed)
+** Reason for using this:
+   Deadgrip is an excellent tool to search for words in files.
+   The reason i am preferring this over rgrep is that sometimes,
+   it doesn't show the matched items in the rgrep buffer.
+   (I may be missing something here, but dead xgrip is so good
+   to ignore what i missed)
 
-  This sounded like a good alternative. I have used it on big 
-  codebase like linux-kernel, it worked pretty well.
-  
-#+BEGIN_SRC emacs-lisp
+   This sounded like a good alternative. I have used it on big
+   codebase like linux-kernel, it worked pretty well.
+
+   #+BEGIN_SRC emacs-lisp
 (use-package deadgrep
   :ensure t)
-#+END_SRC
-  
+   #+END_SRC
+
 * which-key
-   Brings up some help
-#+BEGIN_SRC emacs-lisp
+  Brings up some help
+  #+BEGIN_SRC emacs-lisp
 (use-package which-key
   :ensure t
   :config (which-key-mode))
-#+END_SRC
+  #+END_SRC
 
 * Org mode
-#+BEGIN_SRC emacs-lisp
+  #+BEGIN_SRC emacs-lisp
 ;; Org-mode stuff
 (use-package org-bullets
   :ensure t
@@ -97,18 +96,22 @@ Taken from [[(prefer-coding-system 'utf-8)%0A(set-default-coding-systems 'utf-8)
 
 ;;For org-babel
 (org-babel-do-load-languages
- 'org-babel-load-languages '((C . t)))
-#+END_SRC
+ 'org-babel-load-languages '((C . t) (gnuplot . t)))
+;; add additional languages with '((language . t)))
 
-#+RESULTS:
+;; Change org-plot/gnuplot key
+(local-set-key "\M-\C-g" 'org-plot/gnuplot)
+  #+END_SRC
+
+  #+RESULTS:
 
 * Swiper/Ivy/Counsel
-Swiper gives us a really efficient incremental search with regular 
-expressions and Ivy/Counsel replace a lot of ido or helms completion
-functionality.
+  Swiper gives us a really efficient incremental search with regular
+  expressions and Ivy/Counsel replace a lot of ido or helms completion
+  functionality.
 
-(Looks like counsel is requiremnt for swiper!)
-#+BEGIN_SRC emacs-lisp
+  (Looks like counsel is requiremnt for swiper!)
+  #+BEGIN_SRC emacs-lisp
 (use-package counsel
   :ensure t
   )
@@ -136,26 +139,26 @@ functionality.
     (setq ivy-display-style 'fancy)
     (define-key read-expression-map (kbd "C-r") 'counsel-expression-history)
   ))
-#+END_SRC
+  #+END_SRC
 
 * Flycheck
-#+BEGIN_SRC emacs-lisp
+  #+BEGIN_SRC emacs-lisp
  (use-package flycheck
  :ensure t
  :init
  (global-flycheck-mode t))
-#+END_SRC
+  #+END_SRC
 * beamer
-#+BEGIN_SRC emacs-lisp
+  #+BEGIN_SRC emacs-lisp
  (require 'ox-beamer)
-#+END_SRC
+  #+END_SRC
 * org-ref
-#+BEGIN_SRC emacs-lisp
+  #+BEGIN_SRC emacs-lisp
 (use-package org-ref
    :ensure t)
-#+END_SRC
+  #+END_SRC
 * reveal.js
-#+BEGIN_SRC emacs-lisp
+  #+BEGIN_SRC emacs-lisp
  (use-package ox-reveal
  :ensure ox-reveal)
 
@@ -164,38 +167,15 @@ functionality.
 
  (use-package htmlize
   :ensure t)
-#+END_SRC
+  #+END_SRC
 
 
- # (use-package htmlize
- # :ensure t)
-* spaceline
-#+BEGIN_SRC emacs-lisp
-  (use-package spaceline 
-     :demand t
-     :init 
-     (setq powerline-default-seperator 'arrow-fade)
-     :config 
-     (require 'spaceline-config))
-#+END_SRC
-
-* emacs-eclim
-#+BEGIN_SRC emacs-lisp
-
-  (setq eclim-executable "/home/mohanadatta/.p2/pool/plugins/org.eclim_2.8.0/bin/eclim")
-
-  ;; To automatically activate eclim for java source files
-  (require 'eclim)
-  (add-hook 'jave-mode-hook 'eclim-mode)
-
-  (require 'eclimd)
-
-#+END_SRC
-
+  # (use-package htmlize
+  # :ensure t)
 * C language related configuration
-#+BEGIN_SRC emacs-lisp
+  #+BEGIN_SRC emacs-lisp
 
-  ;; Setting style to linux - what 
+  ;; Setting style to linux - what
   ;; the Linux developers use for kernel development
   (setq c-default-style "linux")
 
@@ -203,17 +183,17 @@ functionality.
 
   (global-set-key (kbd "RET") 'newline-and-indent)
 
-#+END_SRC
+  #+END_SRC
 * yasnippet
-#+BEGIN_SRC emacs-lisp
+  #+BEGIN_SRC emacs-lisp
 
 ;; Package yasnippet
 (require 'yasnippet)
 (yas-global-mode 1)
 
-#+END_SRC
+  #+END_SRC
 * Magit
-#+BEGIN_SRC emacs-lisp
+  #+BEGIN_SRC emacs-lisp
 
 ;; To display information about the Current Git repository,
 ;; 'M-x magit-status RET' is used. This is a basic command,
@@ -222,12 +202,12 @@ functionality.
 
 ;; Taken from magit manual.
  (global-set-key (kbd "C-x g") 'magit-status)
-#+END_SRC
-  
+  #+END_SRC
+
 * Rlang
 
-#+BEGIN_SRC emacs-lisp
+  #+BEGIN_SRC emacs-lisp
 (use-package ess
   :ensure t
 )
-#+END_SRC
+  #+END_SRC

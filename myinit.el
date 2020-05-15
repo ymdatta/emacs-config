@@ -4,16 +4,44 @@
 ;; Column numbers
 (setq column-number-mode t)
 
+;; Show paranthesis Mode
+;; By default, there is a delay before showing
+;; paranthesis. It can be deactivated by the
+;; following line. It should be done before
+;; activating show-paren mode.
+
+(setq show-paren-delay 0) ;; How long to wait
+(show-paren-mode t) ;; turn paren-mode on
+
 ;; whitespace mode
-(require 'whitespace)
 
 (setq inhibit-startup-message t)
 (tool-bar-mode -1)
 
+;; Display time on modeline
+(display-time-mode 1)
+
 ;;Everytime yes or no option is changed to y or n.
 (fset 'yes-or-no-p 'y-or-n-p)
 
+;;set the coding systems the terminal uses
+(prefer-coding-system 'utf-8)
+(set-default-coding-systems 'utf-8)
+(set-terminal-coding-system 'utf-8)
+(set-keyboard-coding-system 'utf-8)
+;; backwards compatibility as default-buffer-file-coding-system
+;; is deprecated in 23.2.
+(if (boundp 'buffer-file-coding-system)
+    (setq-default buffer-file-coding-system 'utf-8)
+  (setq default-buffer-file-coding-system 'utf-8))
+
+;; Treat clipboard input as UTF-8 string first; compound text next, etc.
+(setq x-select-request-type '(UTF8_STRING COMPOUND_TEXT TEXT STRING))
+
 (use-package try
+  :ensure t)
+
+(use-package deadgrep
   :ensure t)
 
 (use-package which-key
@@ -33,7 +61,11 @@
 
 ;;For org-babel
 (org-babel-do-load-languages
- 'org-babel-load-languages '((C . t)))
+ 'org-babel-load-languages '((C . t) (gnuplot . t)))
+;; add additional languages with '((language . t)))
+
+;; Change org-plot/gnuplot key
+(local-set-key "\M-\C-g" 'org-plot/gnuplot)
 
 (use-package counsel
   :ensure t
@@ -82,22 +114,7 @@
 (use-package htmlize
  :ensure t)
 
-(use-package spaceline 
-   :demand t
-   :init 
-   (setq powerline-default-seperator 'arrow-fade)
-   :config 
-   (require 'spaceline-config))
-
-(setq eclim-executable "/home/mohanadatta/.p2/pool/plugins/org.eclim_2.8.0/bin/eclim")
-
-;; To automatically activate eclim for java source files
-(require 'eclim)
-(add-hook 'jave-mode-hook 'eclim-mode)
-
-(require 'eclimd)
-
-;; Setting style to linux - what 
+;; Setting style to linux - what
 ;; the Linux developers use for kernel development
 (setq c-default-style "linux")
 
@@ -115,7 +132,6 @@
 ;; binding.
 
 ;; Taken from magit manual.
-
  (global-set-key (kbd "C-x g") 'magit-status)
 
 (use-package ess
